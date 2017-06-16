@@ -1,9 +1,9 @@
 <?php
-include_once __DIR__.'\..\config.php';
+include_once('config.php');
 include_once 'sanitize.php';
 
-$table_users = "users";
-$table_bookings = "bookings";
+$table_users = "dp1_july2016_users";
+$table_bookings = "dp1_july2016_bookings";
 
 /**
  * Open connection

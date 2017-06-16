@@ -1,5 +1,6 @@
 <?php
 include_once 'sanitize.php';
+
 session_start();
 
 /**

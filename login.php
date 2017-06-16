@@ -1,6 +1,8 @@
 <?php
 
-include_once 'header.php';
+require_once ('functions/config.php');
+require_once ('functions/functions.php');
+require_once ('functions/db_functions.php');
 
 /* If the user was doing a booking the operation will continue
 after registration and/or login */
@@ -25,7 +27,9 @@ if(isset($_POST['register'])){
     $return = create_user($_POST['username_r'], $_POST['password_r']);
 }
 
-if(!logged()){?>
+if(!logged()){
+    include_once 'header.php';
+    ?>
     <div id="container">
         <div id="login_box">
             <h2>Log In</h2>

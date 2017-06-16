@@ -1,5 +1,9 @@
 <?php
-require_once('header.php');
+
+require_once ('functions/config.php');
+require_once ('functions/functions.php');
+require_once ('functions/db_functions.php');
+
 
 if(logged()) {
     $user_reservation = get_user_seats(get_username()); //Seats the logged user has already booked
@@ -53,6 +57,8 @@ if(isset($_GET['action']) && $_GET['action'] == 'release' && !empty($release)){
     exit;
 }
 
+
+require_once('header.php');
 ?>
 
 <div id="container">

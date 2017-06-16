@@ -1,28 +1,17 @@
-<!DOCTYPE HTML>
-<html lang="en">
 <?php
-include __DIR__.'/config.php';
+require_once ('functions/config.php');
 require_once ('functions/functions.php');
 require_once ('functions/db_functions.php');
+require_once ('functions/initial_checks.php');
 
-/* HTTPS */
-if (empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] != 'on') {
-    header('Location: https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
-}
-
-/* COOKIES */
-$page = explode('/', $_SERVER['PHP_SELF']);
-if(!isset($_SESSION['cookie_enabled']) && $page[count($page) - 1] != 'cookie.php') {
-    $_SESSION['page'] = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-    setcookie('test', 'test', time() + 3600);
-    header("location: cookie.php");
-    exit;
-}
-
-/* SESSION EXPIRED */
+/* INITIAL CHECKS */
+check_https();
+check_cookie();
 check_inactivity_time();
 
 ?>
+<!DOCTYPE HTML>
+<html lang="en">
 <head>
     <title>Polito's Theatre</title>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
